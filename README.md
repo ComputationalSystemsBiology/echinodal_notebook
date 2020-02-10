@@ -25,6 +25,15 @@ This notebook covers the different analyses performed using GINsim and other log
 ![alt text](jupyter_notebook/images/001_sea_urchin_dev.png "Sea urchin development")
 **Figure 1** : Schematic representation of the sea urchin early development at the blastula, gastrula and pluteus stages from left to right. The three ectodermal regions of interest are colored at each stages as well as the endoderm. The ventral (blue) and dorsal (green) territories correspond to the regions where the TGF-βs Nodal and BMP2/4 signalling are active respecively.
 
+### Repository composition
+
+This repository is organised into three directories :
+1 - ginsim_model ; where you can find the unicellular model of the D/V axis specification in SBML and GINsim formats.
+2 - epilog_model ; where you can find the multicellular model in PEPS format (to use with Epilog) and the initial unicellular model in SBML format.
+3 - jupyter_notebook ; where you can find the notebook encompassing all the analysis done on the unicellular model using GINsim and MaBoSS. The notebook is in IPYNB and HTML format. To run the notebook, the IPYNB file should be open using the [CoLoMoTo Docker image](https://github.com/colomoto/colomoto-docker). It is also fully displayed in a non-interactive format below.
+
+
+
 ### Environment setup
 
 The first thing to do is to import the necessary libraries to performing the analyses.
