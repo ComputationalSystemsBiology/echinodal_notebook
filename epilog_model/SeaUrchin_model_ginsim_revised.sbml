@@ -7,7 +7,7 @@
         <layout:listOfAdditionalGraphicalObjects>
           <layout:generalGlyph layout:id="_ly_Nodal_In" layout:reference="Nodal_In">
             <layout:boundingBox>
-              <layout:position layout:x="420" layout:y="52"/>
+              <layout:position layout:x="419" layout:y="52"/>
               <layout:dimensions layout:height="35" layout:width="85"/>
             </layout:boundingBox>
           </layout:generalGlyph>
@@ -19,13 +19,13 @@
           </layout:generalGlyph>
           <layout:generalGlyph layout:id="_ly_Panda" layout:reference="Panda">
             <layout:boundingBox>
-              <layout:position layout:x="637" layout:y="52"/>
+              <layout:position layout:x="528" layout:y="54"/>
               <layout:dimensions layout:height="35" layout:width="100"/>
             </layout:boundingBox>
           </layout:generalGlyph>
           <layout:generalGlyph layout:id="_ly_Bmp2_4_In" layout:reference="Bmp2_4_In">
             <layout:boundingBox>
-              <layout:position layout:x="885" layout:y="53"/>
+              <layout:position layout:x="884" layout:y="53"/>
               <layout:dimensions layout:height="35" layout:width="85"/>
             </layout:boundingBox>
           </layout:generalGlyph>
@@ -61,7 +61,7 @@
           </layout:generalGlyph>
           <layout:generalGlyph layout:id="_ly_Alk4_5_7" layout:reference="Alk4_5_7">
             <layout:boundingBox>
-              <layout:position layout:x="422" layout:y="137"/>
+              <layout:position layout:x="421" layout:y="137"/>
               <layout:dimensions layout:height="40" layout:width="80"/>
             </layout:boundingBox>
           </layout:generalGlyph>
@@ -73,7 +73,7 @@
           </layout:generalGlyph>
           <layout:generalGlyph layout:id="_ly_Nodal" layout:reference="Nodal">
             <layout:boundingBox>
-              <layout:position layout:x="26" layout:y="289"/>
+              <layout:position layout:x="23" layout:y="288"/>
               <layout:dimensions layout:height="40" layout:width="80"/>
             </layout:boundingBox>
           </layout:generalGlyph>
@@ -85,13 +85,13 @@
           </layout:generalGlyph>
           <layout:generalGlyph layout:id="_ly_Lefty" layout:reference="Lefty">
             <layout:boundingBox>
-              <layout:position layout:x="213" layout:y="293"/>
+              <layout:position layout:x="213" layout:y="292"/>
               <layout:dimensions layout:height="35" layout:width="90"/>
             </layout:boundingBox>
           </layout:generalGlyph>
           <layout:generalGlyph layout:id="_ly_Chordin" layout:reference="Chordin">
             <layout:boundingBox>
-              <layout:position layout:x="312" layout:y="292"/>
+              <layout:position layout:x="311" layout:y="292"/>
               <layout:dimensions layout:height="35" layout:width="90"/>
             </layout:boundingBox>
           </layout:generalGlyph>
@@ -139,7 +139,7 @@
           </layout:generalGlyph>
           <layout:generalGlyph layout:id="_ly_Alk1_2_3_6" layout:reference="Alk1_2_3_6">
             <layout:boundingBox>
-              <layout:position layout:x="1004" layout:y="146"/>
+              <layout:position layout:x="1004" layout:y="145"/>
               <layout:dimensions layout:height="35" layout:width="90"/>
             </layout:boundingBox>
           </layout:generalGlyph>
@@ -187,7 +187,7 @@
           </layout:generalGlyph>
           <layout:generalGlyph layout:id="_ly_Univin" layout:reference="Univin">
             <layout:boundingBox>
-              <layout:position layout:x="527" layout:y="54"/>
+              <layout:position layout:x="650" layout:y="52"/>
               <layout:dimensions layout:height="35" layout:width="90"/>
             </layout:boundingBox>
           </layout:generalGlyph>
@@ -211,7 +211,7 @@
 </body>
         </notes>
       </qual:qualitativeSpecies>
-      <qual:qualitativeSpecies qual:compartment="comp1" qual:constant="true" qual:id="Panda" qual:maxLevel="1">
+      <qual:qualitativeSpecies qual:compartment="comp1" qual:constant="false" qual:id="Panda" qual:maxLevel="1">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
 <p>In the early stage, Panda constrains Nodal expression.
@@ -318,7 +318,7 @@ Massagué, J., and Chen, Y.-G. (2000). Controlling TGF-β signaling. Genes &amp;
 </body>
         </notes>
       </qual:qualitativeSpecies>
-      <qual:qualitativeSpecies qual:compartment="comp1" qual:constant="false" qual:id="Chordin" qual:maxLevel="1">
+      <qual:qualitativeSpecies qual:compartment="comp1" qual:constant="false" qual:id="Chordin" qual:maxLevel="2">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
 <p>Paracrine factor. Antagonist of BMP. In extracellular space, binds directly to BMP2-4 by cysteine rich modules to prevents its complexing with the receptors. Complexing can be cleaved by metalloprotease Tolloid (Bmp1), freeing Bmp2/4 from Chordin in the dorsal area.</p>
@@ -459,6 +459,15 @@ Receptor for Wnt ligands. Activates admp2 gene.</p>
       <qual:qualitativeSpecies qual:compartment="comp1" qual:constant="false" qual:id="Univin" qual:maxLevel="1" qual:name="Univin"/>
     </qual:listOfQualitativeSpecies>
     <qual:listOfTransitions xmlns:qual="http://www.sbml.org/sbml/level3/version1/qual/version1">
+      <qual:transition qual:id="tr_Panda">
+        <qual:listOfOutputs>
+          <qual:output qual:id="tr_Panda_out" qual:qualitativeSpecies="Panda" qual:transitionEffect="assignmentLevel"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
       <qual:transition qual:id="tr_Admp2_Trans">
         <qual:listOfOutputs>
           <qual:output qual:id="tr_Admp2_Trans_out" qual:qualitativeSpecies="Admp2_Trans" qual:transitionEffect="assignmentLevel"/>
@@ -675,7 +684,7 @@ Receptor for Wnt ligands. Activates admp2 gene.</p>
         <qual:listOfFunctionTerms>
           <qual:defaultTerm qual:resultLevel="0">
           </qual:defaultTerm>
-          <qual:functionTerm qual:resultLevel="1">
+          <qual:functionTerm qual:resultLevel="2">
             <math xmlns="http://www.w3.org/1998/Math/MathML">            
               <apply>
                 <geq/>
@@ -1071,17 +1080,9 @@ Receptor for Wnt ligands. Activates admp2 gene.</p>
           <qual:functionTerm qual:resultLevel="2">
             <math xmlns="http://www.w3.org/1998/Math/MathML">            
               <apply>
-                <and/>
-                <apply>
-                  <eq/>
-                  <ci> Bmp2_4_In </ci>
-                  <cn type="integer"> 2 </cn>
-                </apply>
-                <apply>
-                  <leq/>
-                  <ci> Chordin_In </ci>
-                  <cn type="integer"> 1 </cn>
-                </apply>
+                <eq/>
+                <ci> Bmp2_4_In </ci>
+                <cn type="integer"> 2 </cn>
               </apply>
             </math>
                     </qual:functionTerm>
