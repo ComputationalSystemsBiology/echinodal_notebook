@@ -1,6 +1,6 @@
 ### Deciphering and modelling the TGF-β signalling interplays specifying the dorsal-ventral axis of the sea urchin embryo
 
-#### Swann Floc’hlay1, Maria Dolores Molina2#, Céline Hernandez1#, Emmanuel Haillot2, Morgane Thomas-Chollier1,3, Thierry Lepage2* and Denis Thieffry1*,
+#### Swann Floc’hlay1, Maria Dolores Molina2#, Céline Hernandez1#, Emmanuel Haillot2, Morgane Thomas-Chollier1,3, Thierry Lepage2* and Denis Thieffry1*
 
 
 1. Institut de Biologie de l’ENS (IBENS), École normale supérieure, CNRS, INSERM, Université PSL, 75005 Paris, France.
@@ -21,6 +21,11 @@ Our model analysis accounts for the specification of three main ectodermal regio
 In our model analysis, we first focused on the computation of stable states and on their reachability in single representative cells, depending on signalling inputs. These model simulations correctly reproduce wild-type and mutant phenotypes.
 Next, taking advantage of the software EpiLog (epilog-tool.org), we have simulated grids of cells connected through diffusion of signalling molecules reproducing various reported patterns, including double Nodal mRNA injections.
 This notebook covers the different analyses performed using GINsim and other logical modelling and analysis software.
+
+
+![png](jupyter_notebook/images/Fig3_Regulatory_graph.png)
+**Figure 1** : Unicellular logical model of the dorso-ventral axis specification in the sea urchin *Paracentrotus Lividus*, built using GINsim (ginsim.org). Green and red arrows represent activation and repression respectively. Squared elements represent multilevel nodes that can reach more than two states. This model can reach three different stable states : the dorsal (green), the ventral (blue) and the ciliary (pink) territories corresponding to different set of activated elements. Inputs of the model specified before simulations are shown in yellow.
+
 
 ### Environment setup
 
@@ -91,7 +96,7 @@ ginsim.show(lrg)
 
 
 
-**Figure 1** : Unicellular logical model of the dorso-ventral axis specification in the sea urchin *Paracentrotus Lividus*, built using GINsim (ginsim.org). Green and red arrows represent activation and repression respectively. Squared elements represent multilevel nodes that can reach more than two states. This model can reach three different stable states : the dorsal (green), the ventral (blue) and the ciliary (pink) territories corresponding to different set of activated elements. Inputs of the model specified before simulations are shown in yellow.
+**Figure 2** : Unicellular logical model of the dorso-ventral axis specification in the sea urchin *Paracentrotus Lividus*, built using GINsim (ginsim.org). Green and red arrows represent activation and repression respectively. Squared elements represent multilevel nodes that can reach more than two states. This model can reach three different stable states : the dorsal (green), the ventral (blue) and the ciliary (pink) territories corresponding to different set of activated elements. Inputs of the model specified before simulations are shown in yellow.
 
 **A** - Input nodes
 
@@ -471,7 +476,7 @@ sns.clustermap(wt_fxp.dropna(0),  metric='euclidean', col_cluster=False, ytickla
 
 
 
-![png](output_18_3.png)
+![png](jupyter_notebook/images/output_18_3.png)
 
 
 **Figure 4** : Heatmap of the stable states obtained for the wild-type simulation with the unicelluler logical model for each of the three ectodermal territories. Color scale corresponds to the state of each node (multilevel nodes can reach up to level 2). White region defines nodes which state do not impact the stable state of interest.
@@ -528,7 +533,7 @@ sns.heatmap(wt_res.loc[:,['ventral','ciliary','dorsal']].apply(pd.to_numeric), c
 
 
 
-![png](output_20_1.png)
+![png](jupyter_notebook/images/output_20_1.png)
 
 
 **Figure 5** : Result of the wild type simulations of the logical model along the dorso-ventral axis compared to the expected ectodermal territory patterns. Ventral, ciliary and dorsal territories are represented in blue, pink and green color respectively.
@@ -714,7 +719,7 @@ plt.show()
 ```
 
 
-![png](output_27_0.png)
+![png](jupyter_notebook/images/output_27_0.png)
 
 
 **Figure 6** : Result of the perturbation simulations of the logical model along the dorso-ventral axis compared to the expected ectodermal territory patterns. Ventral, ciliary, dorsal and undefined territories are represented in blue, pink, green and yellow color respectively. The chordin_KO mutant has two different output, has its ventral region can reach two possible stable states (ventral and dorsal).
@@ -752,11 +757,11 @@ plt.savefig('maboss_wt_perc.svg', dpi=300, orientation='landscape')
 ```
 
 
-![png](output_29_0.png)
+![png](jupyter_notebook/images/output_29_0.png)
 
 
 
-![png](output_29_1.png)
+![png](jupyter_notebook/images/output_29_1.png)
 
 
 **Figure 7a** : Results of the stochastic temporal simulation for the ventral territory in wild type condition. X axis represents time, Y axis represents the proportion of each possible states of the output nodes combinaisons.
@@ -777,11 +782,11 @@ plt.savefig('maboss_mut_pie.svg', dpi=300, orientation='landscape')
 ```
 
 
-![png](output_31_0.png)
+![png](jupyter_notebook/images/output_31_0.png)
 
 
 
-![png](output_31_1.png)
+![png](jupyter_notebook/images/output_31_1.png)
 
 
 **Figure 7b** : Results of the stochastic temporal simulation for the ventral territory in chordin KO condition. X axis represents time, Y axis represents the proportion of each possible states of the output nodes combinaisons.
@@ -789,12 +794,6 @@ plt.savefig('maboss_mut_pie.svg', dpi=300, orientation='landscape')
 In the chordin KO simulation however, we see a mixture of two states, one with only Goosecoid being active and the other one with only IrxA being active. Such result would be in agreement with the hypothesis that both the dorsal and ventral cascades are activated in this condition. This would suggest that the observed dorsal weak patterning from the *in-situ* experiments in the ventral territory of the chordin KO mutants results from this co-activation and mutual inhibition of the ventral and the dorsal cascade. In addition, we see that the state with the dorsal marker IrxA being active is representing a higher proportion of the simulation output states, again agreeing with the experimental results describing a weak dorsal pattern.
 
 In order to explore further how such difference in proportion can emerge from these simulations, we modify the probability condition of the key point of the model where the divergence between the ventral and the dorsal specification happens, namely the activation of the ventral and dorsal Smads. Indeed, the activation of a smad leads at the same time to the activation of its own cascade and the to the inhibition of the other competiting smad cascade. This behavior comes from the competition for the Smad4, which recruitement is needed by both cascades.
-
-![alt text](images/chordin_ko_htg.png "Sea urchin development")
-
-**Figure 8** : Hierarchical Transition Graph showing the irreversible states sub-groups reached in the simulation of the chordin_KO ventral region. As before, we note that two possible stable states (i.e. ventral and dorsal) can be reached. The key point of divergence between the two stable states depends on the Smad being activated first. Once a Smad activated, the system is locked and the simulation progress irreversibly toward the corresponding cascade.
-
-As shown in the figure above, we can pinpoint the irreversible divergence point toward either ventral or dorsal specification when one of the two smad groups is activated, as it leads to the maintainance of the competititng Smad in a "Off" state and the further activation of its own regulatory cascade.
 
 The code below explores the temporal behavior change when the propensity to activate one cascade varies against or in favor of other.
 
@@ -821,19 +820,19 @@ plt.savefig('maboss_mutslow_pie.svg', dpi=300, orientation='landscape')
 ```
 
 
-![png](output_33_0.png)
+![png](jupyter_notebook/images/output_33_0.png)
 
 
 
-![png](output_33_1.png)
+![png](jupyter_notebook/images/output_33_1.png)
 
 
 
-![png](output_33_2.png)
+![png](jupyter_notebook/images/output_33_2.png)
 
 
 
-![png](output_33_3.png)
+![png](jupyter_notebook/images/output_33_3.png)
 
 
 **Figure 9** : Results of the stochastic temporal simulation for the ventral territory in chordin_KO condition with higher probability of activation for the Smad of the ventral cascade (top) or the Smad of the dorsal cascade (bottom). X axis represents time, Y axis represents the proportion of each possible states of the output nodes combinaisons.
